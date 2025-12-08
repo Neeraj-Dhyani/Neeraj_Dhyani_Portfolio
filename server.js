@@ -13,20 +13,19 @@ let transport  = Email.createTransport({
         pass:process.env.EMAIL_PASS
     }
 })
-console.log(process.env.EMAIL_USER)
+
 const server = http.createServer((req, res)=>{
     if(req.method === "POST" && req.url === "/send_message"){
         let body = ''
         req.on("data", (chunck)=>{
             body += chunck.toString()
         })
-        console.log(process.env.EMAIL_USER)
         req.on("end", ()=>{
             const formData = querystring.parse(body)
             const {name, email, message} = formData
             transport.sendMail({
                 from:email,
-                to:"neerajdhyani47@gmail.com",
+                to:process.env.EMAIL_USER,
                 subject:`New Message From Portfolio:${name}`,
                 text:`Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
                 html:`
@@ -37,8 +36,9 @@ const server = http.createServer((req, res)=>{
                 `
             }, (err, info)=>{
                 if(err){
+                    console.log("Email Error:", err.message);
                     res.writeHead(500, {"content-type":"text/plain"})
-                    return res.end("Email sending email", err.message)
+                    return res.end("Failed to send email")
                 }
                 res.writeHead(302, {location: "/tankyou.html"})
                 return res.end()
