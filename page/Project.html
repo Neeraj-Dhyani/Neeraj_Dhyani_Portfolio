@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+</head>
+  <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 20px;
+
+        }
+        .nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+        }
+        .nav a:hover {
+            text-decoration: underline;
+        }
+        .project {
+            width: 92.5vw;
+            text-align: left;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid black;;
+        }
+        .project h3 {
+            margin: 0;
+        }
+        .project p {
+            font-size: 14px;
+        }
+        a.repo {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #222;
+  color: white;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+a.repo:hover {
+  background: #444;
+}
+
+    </style>
+<body>
+     
+    <p class="nav">
+        <a onclick="go('index.html')">Home</a> |
+        <a onclick="go('projects.html')">Projects</a> |
+        <a onclick="go('contact.html')">Contact</a>
+    </p>
+
+    <h2>My Projects</h2>
+
+     <div class="project">
+        <h3>React Project</h3>
+         <div>
+            <h4>React Recipe Project</h4>
+            <p>A dynamic recipe search application built using React.js and a public recipe API. Users can search for any dish and instantly view ingredients, instructions, and cooking images. Optimized using React hooks and modular components.</p>
+            <span><b>Tech Stach:</b><span>React, Fetch API, Eddamam API ,CSS</span><br>
+            <span><b>Feature</b></span>
+                <ul>
+                    <li>Live recipe search</li>
+                    <li>Ingredient & step-by-step instructions</li>
+                    <li>Clean and responsive UI</li>
+                </ul>
+            
+            <a href="https://github.com/Neeraj-Dhyani/React_Recipe">GitHub Link</a>
+        </div>
+         <div>
+            <h4>React E-Commerce Project</h4>
+            <p>A full-featured E-Commerce frontend developed using React.js. It includes product listings, category filtering, user authentication UI, and an interactive cart system. Designed to integrate with your Node.js backend & MongoDB.</p>
+            <span><b>Tech Stach:<span>React, Context API, Bootstrap/Tailwind</b></span><br>
+            <span><b>Feature</b></span>
+                <ul>
+                    <li>Responsive product display & categories</li>
+                    <li>Add to cart & update quantity</li>
+                    <li>Login/Signup page UI</li>
+                </ul>
+            
+            <a href="https://github.com/Neeraj-Dhyani/React_Ecommerce">GitHub Link</a>
+        </div>
+    </div>
+     <div class="project">
+        <h3>Backend Project</h3>
+         <div>
+            <h4>Employee-Management Project</h4>
+            <p>A complete backend application using Node.js, Express.js, and MongoDB. It manages employees with full CRUD operations, authentication, and encrypted passwords.</p>
+            <span ><b>Tech Stach:</b><span>Node.js, Express.js, MongoDB, Mongoose</span><br>
+            <span><b>Feature</b></span>
+                <ul>
+                    <li>Add, edit, delete, and list employees</li>
+                    <li>Authentication with bcrypt</li>
+                    <li>REST API with proper validation</li>
+                </ul>
+            
+            <a href="https://github.com/Neeraj-Dhyani/Backend_Employee-Management-System">GitHub Link</a>
+        </div>
+         <div>
+            <h4>Insta-Backend Project</h4>
+           <p>A backend replica of social media functionality such as Instagram. Supports user authentication, post creation, like/comment structure, and media upload logic.</p>
+           <span><b>Tech Stach:</b><span>Node.js, Express.js, MongoDB, Multer, JWT</span><br>
+            
+            <span><b>Feature</b></span>
+                <ul>
+                    <li>Secure user login/signup (JWT)</li>
+                    <li>Post creation & image upload logic</li>
+                    <li>Like + comment backend APIs</li>
+                </ul>
+           
+            <a href="https://github.com/Neeraj-Dhyani/Backend_Insta">GitHub Link</a>
+        </div>
+    </div>
+    <div class="project">
+        <h3>Dom Project</h3>
+        <div>
+            <h4>Weather Project</h4>
+            <p>A weather forecasting web app using DOM manipulation + OpenWeather API. Users search by city and view temperature, status icons (sunny, cloudy, rainy), and live time display.</p>
+            <span><b>Feature</b></span>
+                <ul>
+                    <li>Live weather and icons</li>
+                    <li>Responsive UI with dynamic background</li>
+                    <li>Real-time updates</li>
+                </ul>
+            
+            <a href="https://github.com/Neeraj-Dhyani/Dom_Weather-App">GitHub Link</a>
+        </div>
+        <div>
+            <h4>Game Project</h4>
+            <p>A browser-based logic game built with HTML, CSS, and Vanilla JS. Uses DOM events and randomization logic to provide dynamic gameplay.</p>
+            <span><b>Feature</b></span>
+                <ul>
+                    <li>Fully interactive UI</li>
+                    <li>Sound & score logic (optional)</li>
+                    <li>Replay option</li>
+                </ul>
+            
+            <a href="https://github.com/Neeraj-Dhyani/Space_War_Game">GitHub Link</a>
+        </div>
+          <div>
+            <h4>Image Data Manipulation Project</h4>
+            <p>A browser image editor built using HTML Canvas + JavaScript. Users can apply filters like grayscale, invert, brightness, and sepia (vintage effect). </p>
+            <span><b>Feature</b></span>
+                <ul>
+                    <li>Live image upload & preview</li>
+                    <li>Filters: grayscale, inverted, brightness, sepia</li>
+                    <li>Pixel-level manipulation using Canvas API</li>
+                </ul>
+            
+            <a href="https://github.com/Neeraj-Dhyani/Image_editor">GitHub Link</a>
+        </div>
+          <div>
+            <h4>Setallite Tracker Project</h4>
+            <p>A real-time satellite tracking tool that fetches ISS location data from an API and displays position & coordinates with UI updates.</p>
+            <span><b>Feature</b></span>
+                <ul>
+                    <li>Live latitude & longitude tracking</li>
+                    <li>Real-time update interval</li>
+                    <li>For map OpenStreetMap API</li>
+                </ul>
+            
+            <a href="https://github.com/Neeraj-Dhyani/Dom_Setallite-Tracker">GitHub Link</a>
+        </div>
+        <div>
+            <h4>Exchange Rate Project</h4>
+            <p>A currency converter using public currency exchange APIs. Provides conversion rate, dropdown for currency selection, and DOM-based calculations.</p>
+            <span><b>Feature</b></span>
+                <ul>
+                    <li>Live currency rates</li>
+                    <li>Dynamic UI updates</li>
+                    <li>Supports multiple currencies</li>
+                </ul>
+            
+            
+            <a href="https://github.com/Neeraj-Dhyani/Dom_Exchange-Rate">GitHub Link</a>
+        </div>
+    </div>
+</body>
+<script>
+     function go(page){
+        window.location.href = page
+     }
+</script>
+</html>

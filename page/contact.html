@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+<style>
+    body {
+       display: inline; 
+      font-family: Arial, sans-serif;
+      background:white;
+      color: black;
+      margin: 0;
+      padding: 40px;
+      align-content: center;
+    }
+    .box {
+      max-width: 350px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      border-color: black;
+      
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border-radius: 5px;
+      outline: none;
+    }
+     form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    button {
+       width: auto;
+      background-color: gray;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    a {
+      color: black;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+<body>
+    <div class="box">
+        <h2>Contact Me</h2>
+    <form action="/send_message" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="3" placeholder="Message..." required></textarea>
+       <button type="submit" style="align-self: center;">Send Message</button>
+   </form>
+   </div>
+   
+    <a href="index.html">⬅ Go Back</a>
+</div>
+</body>
+</html>
