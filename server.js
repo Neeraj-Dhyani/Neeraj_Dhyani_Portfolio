@@ -3,7 +3,8 @@ const fs = require("fs");
 const path = require("path");
 const Email = require("nodemailer")
 const querystring = require("querystring");
-const PORT  = 3000
+const PORT  = process.env.PORT || 3000;
+
 
 let transport  = Email.createTransport({
     service:"gmail",
