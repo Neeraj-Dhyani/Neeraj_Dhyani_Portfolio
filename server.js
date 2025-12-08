@@ -13,13 +13,14 @@ let transport  = Email.createTransport({
         pass:process.env.EMAIL_PASS
     }
 })
-
+console.log(process.env.EMAIL_USER)
 const server = http.createServer((req, res)=>{
     if(req.method === "POST" && req.url === "/send_message"){
         let body = ''
         req.on("data", (chunck)=>{
             body += chunck.toString()
         })
+        console.log(process.env.EMAIL_USER)
         req.on("end", ()=>{
             const formData = querystring.parse(body)
             const {name, email, message} = formData
