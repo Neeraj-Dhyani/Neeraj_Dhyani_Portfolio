@@ -39,7 +39,7 @@ const server = http.createServer((req, res)=>{
                     res.writeHead(500, {"content-type":"text/plain"})
                     return res.end("Email sending email", err.message)
                 }
-                res.writeHead(302, {location: "tankyou.html"})
+                res.writeHead(302, {location: "/tankyou.html"})
                 return res.end()
             })
         })
