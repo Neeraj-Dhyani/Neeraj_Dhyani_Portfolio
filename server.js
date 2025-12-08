@@ -46,7 +46,7 @@ const server = http.createServer((req, res)=>{
         return;
     }
 
-    let filepath = "./page"+(req.url == "/Neeraj_Dhyai"?"/index.html":req.url)
+    let filepath = "./page"+(req.url == "/"?"/index.html":req.url)
     let extname = path.extname(filepath)
      // Map MIME types
     const contentType = {
