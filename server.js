@@ -9,8 +9,8 @@ const PORT  = process.env.PORT || 3000;
 let transport  = Email.createTransport({
     service:"gmail",
     auth:{
-        user:"neerajdhyani47@gmail.com",
-        pass:"gqme yppz oopo esok"
+        user:process.env.USER,
+        pass:process.env.PASS
     }
 })
 
