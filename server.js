@@ -1,3 +1,4 @@
+require("dotenv").config()
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
@@ -20,11 +21,12 @@ const server = http.createServer((req, res)=>{
         req.on("data", (chunck)=>{
             body += chunck.toString()
         })
+        console.log(process.env.EMAIL_PASS, process.env.EMAIL_USER)
         req.on("end", ()=>{
             const formData = querystring.parse(body)
             const {name, email, message} = formData
             transport.sendMail({
-                from:email,
+                from:process.env.EMAIL_USER,
                 to:process.env.EMAIL_USER,
                 subject:`New Message From Portfolio:${name}`,
                 text:`Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
@@ -46,7 +48,15 @@ const server = http.createServer((req, res)=>{
         })
         return;
     }
-
+    if(req.url === "/download_Resume"){
+        const filepath = path.join(__dirname, "/page/Neeraj_Dhyani.pdf")
+        res.writeHead(200, {
+            "content-Type":"application/pdf",
+            "content-disposition":"attachment; filename=Neerah_Dhyani_resume.pdf"
+        })
+        fs.createReadStream(filepath).pipe(res)
+        return;
+    }
     let filepath = "./page"+(req.url == "/"?"/index.html":req.url)
     let extname = path.extname(filepath)
      // Map MIME types
