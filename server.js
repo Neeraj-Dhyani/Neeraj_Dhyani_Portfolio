@@ -2,18 +2,19 @@ require("dotenv").config()
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
-const Email = require("nodemailer")
 const querystring = require("querystring");
 const PORT  = process.env.PORT || 3000;
+const resend = new require("resend")
 
+const email_resend = new resend.Resend("re_MybYgw47_DeQShFHFZzfFAkK2bUEhpWF2")
 
-let transport  = Email.createTransport({
-    service:"gmail",
-    auth:{
-        user:process.env.EMAIL_USER,
-        pass:process.env.EMAIL_PASS
-    }
-})
+// let transport  = Email.createTransport({
+//     service:"gmail",
+//     auth:{
+//         user:process.env.EMAIL_USER,
+//         pass:process.env.EMAIL_PASS
+//     }
+// })
 
 const server = http.createServer((req, res)=>{
     if(req.method === "POST" && req.url === "/send_message"){
@@ -21,35 +22,35 @@ const server = http.createServer((req, res)=>{
         req.on("data", (chunck)=>{
             body += chunck.toString()
         })
-        console.log(process.env.EMAIL_PASS, process.env.EMAIL_USER)
-        req.on("end", ()=>{
+        req.on("end", async ()=>{
             const formData = querystring.parse(body)
             const {name, email, message} = formData
-            transport.sendMail({
-                from:process.env.EMAIL_USER,
-                to:process.env.EMAIL_USER,
-                subject:`New Message From Portfolio:${name}`,
-                text:`Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-                html:`
-                    <h3>Portfolio Contact Form Message</h3>
-                    <p><b>Name:</b> ${name}</p>
-                    <p><b>Email:</b> ${email}</p>
-                    <p><b>Message:</b><br>${message}</p>
-                `
-            }, (err, info)=>{
-                if(err){
-                    console.log("Email Error:", err.message);
-                    res.writeHead(500, {"content-type":"text/plain"})
-                    return res.end("Failed to send email")
-                }
-                res.writeHead(302, {location: "/tankyou.html"})
-                return res.end()
-            })
+            try{
+                 const result = await email_resend.emails.send({
+                        from: process.env.USER_EMAIL,
+                        to: process.env.USER_EMAIL,
+                        subject: `New Message from ${name}`,
+                        html: `
+                        <h3>New Portfolio Message</h3>
+                        <p><b>Name:</b> ${name}</p>
+                        <p><b>Email:</b> ${email}</p>
+                        <p><b>Message:</b><br>${message}</p>
+                        
+                        `})
+            res.writeHead(302, {location: "/tankyou.html"})
+            return res.end()
+    
+            }catch(err){
+                console.log("Email Error:", error);
+                res.writeHead(500, { "Content-Type": "text/plain" });
+                return res.end("Failed to send email.");
+            }
+           
         })
         return;
     }
     if(req.url === "/download_Resume"){
-        const filepath = path.join(__dirname, "/page/Neeraj_Dhyani.pdf")
+        const filepath = path.join(__dirname, "/resume/Neeraj_Dhyani.pdf")
         res.writeHead(200, {
             "content-Type":"application/pdf",
             "content-disposition":"attachment; filename=Neerah_Dhyani_resume.pdf"
