@@ -8,13 +8,7 @@ const resend = new require("resend")
 
 const email_resend = new resend.Resend("re_MybYgw47_DeQShFHFZzfFAkK2bUEhpWF2")
 
-// let transport  = Email.createTransport({
-//     service:"gmail",
-//     auth:{
-//         user:process.env.EMAIL_USER,
-//         pass:process.env.EMAIL_PASS
-//     }
-// })
+
 
 const server = http.createServer((req, res)=>{
     if(req.method === "POST" && req.url === "/send_message"){
